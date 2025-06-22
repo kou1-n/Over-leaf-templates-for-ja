@@ -1,95 +1,181 @@
-\documentclass[dvipdfmx]{article}
-\usepackage{graphicx}
-% 画像ファイルの場所をLaTeXに教える (今後 \includegraphics で figures/ と書く必要がなくなります)
-\graphicspath{{figures/}} % <-- 追加
+% ========================================
+% LaTeX Template for Japanese Documents
+% ========================================
+% このファイルは日本語文書作成のためのメインテンプレートです
+% 各パッケージの役割と設定について詳しく説明しています
 
+% ========================================
+% ドキュメントクラスの設定
+% ========================================
+\documentclass[dvipdfmx]{article}
+% dvipdfmx: 日本語対応のPDF出力エンジン
+% article: 一般的な論文・報告書用のドキュメントクラス
+
+% ========================================
+% 画像・図表関連のパッケージ
+% ========================================
+\usepackage{graphicx}
+% graphicx: 画像挿入のための基本パッケージ
+% \includegraphicsコマンドを使用可能にする
+
+% 画像ファイルの場所をLaTeXに教える
+% これにより、\includegraphicsで figures/ フォルダを指定する必要がなくなります
+\graphicspath{{figures/}}
+
+% ========================================
+% 数式・数学記号関連のパッケージ
+% ========================================
 \usepackage{amsmath}
+% amsmath: 高度な数式環境（align, matrix, cases等）
+% 数式の配置や複雑な数式表現を可能にする
+
 \usepackage{amssymb}
+% amssymb: 数学記号の拡張（\mathbb, \mathcal等）
+% 特殊な数学記号を使用可能にする
+
+\usepackage{bm}
+% bm: 太字の数式記号（\bm{数式}）
+% ベクトルや行列を太字で表現する際に使用
+
+% ========================================
+% 図表の配置・キャプション関連
+% ========================================
 \usepackage{subcaption}
+% subcaption: サブ図・サブ表のキャプション
+% subfigure環境で複数の図を並べて配置可能
+
+% ========================================
+% ソースコード表示関連のパッケージ
+% ========================================
 \usepackage{listings}
+% listings: ソースコードの表示
+% シンタックスハイライト、行番号、フレーム等を設定可能
+
 \usepackage{xcolor}
+% xcolor: カラー設定
+% listingsパッケージで使用する色を定義
+
+% ソースコードの表示設定
 \lstset{
-  basicstyle=\small\ttfamily,
-  commentstyle=\color{green},
-  keywordstyle=\color{blue},
-  stringstyle=\color{red},
-  frame=tb,
-  breaklines=true,
-  columns=fullflexible,
-  numbers=left,
-  numberstyle=\tiny\color{gray},
-  showstringspaces=false
+  basicstyle=\small\ttfamily,      % 基本スタイル：小さめの等幅フォント
+  commentstyle=\color{green},      % コメントの色：緑
+  keywordstyle=\color{blue},       % キーワードの色：青
+  stringstyle=\color{red},         % 文字列の色：赤
+  frame=tb,                        % フレーム：上下に線
+  breaklines=true,                 % 長い行を自動改行
+  columns=fullflexible,            % 文字幅を調整
+  numbers=left,                    % 行番号を左に表示
+  numberstyle=\tiny\color{gray},   % 行番号のスタイル：小さく灰色
+  showstringspaces=false           % 文字列内のスペースを表示しない
 }
+
+% ========================================
+% アルゴリズム記述関連のパッケージ
+% ========================================
 \usepackage{algorithm}
+% algorithm: アルゴリズム環境
+% アルゴリズムに番号とキャプションを付ける
+
 \usepackage{algpseudocode}
-% --- フロート制御パッケージ---
+% algpseudocode: 擬似コード記述
+% アルゴリズムの擬似コードを記述するための環境
+
+% ========================================
+% フロート制御パッケージ（図表の配置制御）
+% ========================================
 % [section]オプションで、\section の前に自動でバリアを設置
+% これにより、図表が次のセクションに流れることを防ぐ
 \usepackage[section]{placeins}
+
 % \subsection の前に自動でバリアを設置するためのパッケージ
+% より細かいレベルで図表の配置を制御
 \usepackage{etoolbox}
 \preto{\subsection}{\FloatBarrier}
-% ------------------------------------
 
-% ----- ハイパーリンクの設定 -----
+% ========================================
+% ハイパーリンクの設定
+% ========================================
 \usepackage[
-  dvipdfmx,
-  colorlinks=true,
-  linkcolor=blue,
-  citecolor=green,
-  urlcolor=magenta,
-  bookmarks=true,
-  bookmarksnumbered=true
+  dvipdfmx,                        % 日本語PDF対応
+  colorlinks=true,                 % リンクを色付きで表示
+  linkcolor=blue,                  % 内部リンクの色：青
+  citecolor=green,                 % 引用リンクの色：緑
+  urlcolor=magenta,                % URLの色：マゼンタ
+  bookmarks=true,                  % PDFのブックマークを有効化
+  bookmarksnumbered=true           % ブックマークに番号を付ける
 ]{hyperref}
-% -----------------------------
 
-% ----- プロフィール情報の読み込み -----
+% ========================================
+% プロフィール情報の読み込み
+% ========================================
+% 外部ファイルから著者情報を読み込み
+% セキュリティのため、実際のプロフィールファイルはローカルのみに保持
 \input{content/profile}
-% ------------------------------------
 
-\title{\reportTitle}
-\author{\generateAuthor}
-\date{\reportDate}
+% ========================================
+% ドキュメントの基本情報設定
+% ========================================
+\title{\reportTitle}              % タイトル（profile.texで定義）
+\author{\generateAuthor}          % 著者情報（profile.texで定義）
+\date{\reportDate}                % 日付（profile.texで定義）
 
+% ========================================
+% ドキュメント本文の開始
+% ========================================
 \begin{document}
 
+% タイトルページの生成
 \maketitle
 
-% ----- 要旨(Abstract) -----
+% ========================================
+% 要旨(Abstract)セクション
+% ========================================
 \begin{abstract}
-  \input{content/abstract} % <-- 変更
+  % 要旨の内容を外部ファイルから読み込み
+  \input{content/abstract}
 \end{abstract}
-% --------------------------
 
-% ----- 目次、図目次、表目次 -----
-\tableofcontents
-\listoffigures
-\listoftables
-\newpage
-% -----------------------------
+% ========================================
+% 目次・図目次・表目次の生成
+% ========================================
+\tableofcontents                   % 目次
+\listoffigures                     % 図目次
+\listoftables                      % 表目次
+\newpage                           % 改ページ
 
-% ----- 本文 -----
-\input{content/body} % <-- 変更
+% ========================================
+% 本文セクション
+% ========================================
+% 本文の内容を外部ファイルから読み込み
+\input{content/body}
 
-% ----------------------------------------------------------------
+% ========================================
+% ファイル分割の例（コメントアウト）
+% ========================================
 % ★ 本文が長くなってきたら、body.texを分割して以下のように管理できます
 %
-% \input{content/01_introduction}
-% \input{content/02_methodology}
-% \input{content/03_results_and_discussion}
-% \input{content/04_conclusion}
+% \input{content/01_introduction}        % 1章：はじめに
+% \input{content/02_methodology}         % 2章：手法
+% \input{content/03_results_and_discussion} % 3章：結果と考察
+% \input{content/04_conclusion}          % 4章：結論
 %
 % このように、main.texを「目次」のように使って章ごとにファイルを分けると、
 % さらに管理がしやすくなります。
-% ----------------------------------------------------------------
+% 各章のファイルは content/ フォルダに配置することを推奨します。
 
+% ========================================
+% 付録(Appendix)セクション
+% ========================================
+\appendix                          % 付録環境の開始
+\input{content/appendix}           % 付録の内容を外部ファイルから読み込み
 
-% ----- 付録(Appendix) -----
-\appendix
-\input{content/appendix}
-% -----------------------
+% ========================================
+% 参考文献リストの挿入
+% ========================================
+\bibliographystyle{jplain}         % 参考文献のスタイル（日本語対応）
+\bibliography{bib/references}      % 参考文献ファイルの指定
 
-% ----- 参考文献リストの挿入 -----
-\bibliographystyle{jplain}
-\bibliography{bib/references}
-
+% ========================================
+% ドキュメントの終了
+% ========================================
 \end{document}
