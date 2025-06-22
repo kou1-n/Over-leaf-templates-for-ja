@@ -34,4 +34,7 @@ Thumbs.db
 # Editor files
 .vscode/
 .idea/
-*.sublime-* 
+*.sublime-*
+
+# Personal profile information (keep local only)
+content/profile.tex 
