@@ -1,0 +1,126 @@
+
+
+\section{はじめに}
+
+本文の執筆は、このファイルで行います。
+LaTeXは高機能な文書作成システムであり\cite{lamport1994}、特に数式や参考文献の扱いに優れています。
+詳細は公式サイト \href{https://www.latex-project.org/}{The LaTeX Project} や、簡単な紹介サイト \url{https://texwiki.texjp.org/} などで確認できます。
+
+
+
+
+\section{基本的な要素の例}
+
+\subsection{図の挿入}
+`figure`環境を用いて、図\ref{fig:sample}のような画像を挿入できます。
+`main.tex`に`\graphicspath{{figures/}}`と記述したため、画像ファイルは`figures`フォルダに置いてください。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.7\textwidth]{example-image-a}
+  \caption{基本的な図の例}
+  \label{fig:sample}
+\end{figure}
+
+\subsection{表の作成}
+表\ref{tab:sample}に、`tabular`環境を用いて作成した表の例を示します。
+
+\begin{table}[htbp]
+  \centering
+  \caption{サンプル表}
+  \label{tab:sample}
+  \begin{tabular}{|l|c|r|}
+    \hline
+    \textbf{左揃え (l)} & \textbf{中央揃え (c)} & \textbf{右揃え (r)} \\
+    \hline
+    商品A & 150個 & 30,000円 \\
+    商品B & 20個 & 5,400円 \\
+    商品C & 350個 & 105,000円 \\
+    \hline
+  \end{tabular}
+\end{table}
+
+\subsection{グラフの挿入}
+グラフも図と同様に、外部ツールで作成した画像ファイルを挿入するのが一般的です（図\ref{fig:graph-image}）。
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.8\textwidth]{example-image-b}
+  \caption{外部ツールで作成し、画像として挿入したグラフの例}
+  \label{fig:graph-image}
+\end{figure}
+
+
+
+
+\section{技術的な要素の記述例}
+
+\subsection{Subfigureによる図の並列配置}
+`subcaption`パッケージを使うと、図\ref{fig:subfigures}のように複数の図を並べて配置し、それぞれに(a), (b)のような副キャプションを付けることができます。
+
+\begin{figure}[htbp]
+  \centering
+  % 1つ目の図 (a)
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{example-image-a}
+    \caption{1つ目の図（結果A）}
+    \label{fig:sub-a}
+  \end{subfigure}
+  \hfill % 図の間に少しスペースを空ける
+  % 2つ目の図 (b)
+  \begin{subfigure}[b]{0.48\textwidth}
+    \centering
+    \includegraphics[width=\textwidth]{example-image-b}
+    \caption{2つ目の図（結果B）}
+    \label{fig:sub-b}
+  \end{subfigure}
+  \caption{2つの結果を比較した図}
+  \label{fig:subfigures}
+\end{figure}
+
+\subsection{ソースコードの掲載}
+`listings`パッケージを用いると、ソースコード\ref{lst:pythonsample}のように、シンタックスハイライトや行番号を付けてコードを綺麗に表示できます。
+
+\begin{lstlisting}[language=Python, caption={Pythonによる簡単なサンプルコード}, label={lst:pythonsample}]
+# This is a sample Python code.
+import numpy as np
+
+def calculate_mean(data):
+    """Calculate the mean of a list of numbers."""
+    if not data:
+        return 0
+    # 平均値を計算する
+    mean = np.mean(data)
+    print(f"The mean is: {mean}")
+    return mean
+
+if __name__ == '__main__':
+    my_data = [10, 20, 30, 40, 50]
+    calculate_mean(my_data)
+\end{lstlisting}
+
+\subsection{アルゴリズムの記述}
+`algorithm`と`algpseudocode`パッケージを使うことで、アルゴリズム\ref{alg:euclid}のような擬似コードを記述できます。
+
+\begin{algorithm}[htbp]
+  \caption{ユークリッドの互除法 (Euclidean Algorithm)}
+  \label{alg:euclid}
+  \begin{algorithmic}[1] % [1]で行番号を付ける
+    \Require 整数 $a, b$ ($a \ge b > 0$)
+    \Ensure $a$と$b$の最大公約数
+    \State $r \gets a \pmod b$
+    \While{$r \neq 0$}
+      \State $a \gets b$
+      \State $b \gets r$
+      \State $r \gets a \pmod b$
+    \EndWhile
+    \State \Return $b$
+  \end{algorithmic}
+\end{algorithm}
+
+
+
+
+\section{結論}
+アインシュタインの論文\cite{einstein1905}などを参考に、レポートの結論をここに記述します。

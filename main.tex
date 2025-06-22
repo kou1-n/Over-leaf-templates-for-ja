@@ -1,0 +1,96 @@
+\documentclass[dvipdfmx]{article}
+\usepackage{graphicx}
+% 画像ファイルの場所をLaTeXに教える (今後 \includegraphics で figures/ と書く必要がなくなります)
+\graphicspath{{figures/}} % <-- 追加
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\small\ttfamily,
+  commentstyle=\color{green},
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  frame=tb,
+  breaklines=true,
+  columns=fullflexible,
+  numbers=left,
+  numberstyle=\tiny\color{gray},
+  showstringspaces=false
+}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+% --- フロート制御パッケージ---
+% [section]オプションで、\section の前に自動でバリアを設置
+\usepackage[section]{placeins}
+% \subsection の前に自動でバリアを設置するためのパッケージ
+\usepackage{etoolbox}
+\preto{\subsection}{\FloatBarrier}
+% ------------------------------------
+
+% ----- ハイパーリンクの設定 -----
+\usepackage[
+  dvipdfmx,
+  colorlinks=true,
+  linkcolor=blue,
+  citecolor=green,
+  urlcolor=magenta,
+  bookmarks=true,
+  bookmarksnumbered=true
+]{hyperref}
+% -----------------------------
+
+\title{Your Report Title}
+\author{Koichi Nagasaku \\
+        Student ID: 25HJ046 \\
+        Yamada-Matsui Laboratory \\
+        Information Science Program \\
+        Graduate School of Environment and Information Sciences \\
+        Yokohama National University}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% ----- 要旨(Abstract) -----
+\begin{abstract}
+  \input{content/abstract} % <-- 変更
+\end{abstract}
+% --------------------------
+
+% ----- 目次、図目次、表目次 -----
+\tableofcontents
+\listoffigures
+\listoftables
+\newpage
+% -----------------------------
+
+% ----- 本文 -----
+\input{content/body} % <-- 変更
+
+% ----------------------------------------------------------------
+% ★ 本文が長くなってきたら、body.texを分割して以下のように管理できます
+%
+% \input{content/01_introduction}
+% \input{content/02_methodology}
+% \input{content/03_results_and_discussion}
+% \input{content/04_conclusion}
+%
+% このように、main.texを「目次」のように使って章ごとにファイルを分けると、
+% さらに管理がしやすくなります。
+% ----------------------------------------------------------------
+
+
+% ----- 付録(Appendix) -----
+\appendix
+\input{content/appendix}
+% -----------------------
+
+% ----- 参考文献リストの挿入 -----
+\bibliographystyle{jplain}
+\bibliography{bib/references}
+
+\end{document}
