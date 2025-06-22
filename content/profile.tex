@@ -1,0 +1,62 @@
+% ========================================
+% プロフィール情報設定ファイル
+% ========================================
+
+% 基本情報
+\newcommand{\profileName}{Koichi Nagasaku}
+\newcommand{\profileStudentID}{25HJ046}
+\newcommand{\profileLaboratory}{Yamada-Matsui Laboratory}
+\newcommand{\profileProgram}{Information Science Program}
+\newcommand{\profileSchool}{Graduate School of Environment and Information Sciences}
+\newcommand{\profileUniversity}{Yokohama National University}
+
+% 連絡先情報（オプション）
+\newcommand{\profileEmail}{nagasaku-koichi-rt@ynu.jp}
+\newcommand{\profilePhone}{+81-70-2676-2973}
+
+% 研究分野・専門（オプション）
+\newcommand{\profileResearchArea}{機械学習・データサイエンス}
+\newcommand{\profileKeywords}{AI, Machine Learning, Data Analysis}
+
+% 報告書タイトル
+\newcommand{\reportTitle}{put Your Report Title}
+
+% 報告書の種類（オプション）
+\newcommand{\reportType}{課題報告書}
+\newcommand{\reportDate}{\today}
+
+% ========================================
+% プロフィール情報を表示するコマンド
+% ========================================
+
+% 著者情報を生成
+\newcommand{\generateAuthor}{
+  \profileName \\
+  Student ID: \profileStudentID \\
+  \profileLaboratory \\
+  \profileProgram \\
+  \profileSchool \\
+  \profileUniversity
+}
+
+% 完全なプロフィール情報を表示（オプション）
+\newcommand{\showFullProfile}{
+  \begin{center}
+    \textbf{\large 著者情報}
+  \end{center}
+  
+  \begin{table}[h]
+    \centering
+    \begin{tabular}{ll}
+      \textbf{氏名:} & \profileName \\
+      \textbf{学籍番号:} & \profileStudentID \\
+      \textbf{研究室:} & \profileLaboratory \\
+      \textbf{プログラム:} & \profileProgram \\
+      \textbf{研究科:} & \profileSchool \\
+      \textbf{大学:} & \profileUniversity \\
+      \textbf{研究分野:} & \profileResearchArea \\
+      \textbf{キーワード:} & \profileKeywords \\
+      \textbf{連絡先:} & \profileEmail \\
+    \end{tabular}
+  \end{table}
+} 
