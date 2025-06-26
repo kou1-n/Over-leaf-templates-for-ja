@@ -91,6 +91,8 @@
 % より細かいレベルで図表の配置を制御
 \usepackage{etoolbox}
 \preto{\subsection}{\FloatBarrier}
+\preto{\subsubsection}{\FloatBarrier}
+%必要なら，subsubsubについても同様に追加すればよい
 
 % ========================================
 % ハイパーリンクの設定
