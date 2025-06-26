@@ -84,6 +84,14 @@ latexmk -pdf main.tex
 - latexmk
 - 日本語LaTeX環境（pLaTeX等）
 
+## 想定環境
+
+本テンプレートは以下の環境での利用を想定しています。
+
+- TeX Live 2020以降がインストールされた環境
+- `latexmkrc`に記載のとおり、`platex`、`pbibtex`、`dvipdfmx`、`mendex`でコンパイル
+- Overleafにアップロードして利用する場合も同様の設定で動作確認済み
+
 ## ライセンス
 
 このテンプレートは自由に使用・改変できます。 
